@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "../Image/Image";
+import Button from "../UI/Button/Button";
 
 interface IProps {}
 
@@ -27,18 +28,18 @@ const ProductCard = ({}: IProps) => {
       </div>
 
       <div className="flex items-center justify-between space-x-1.5 my-5">
-        <button
+        <Button
           className="bg-green-700 text-white p-2 w-full
          rounded-md font-semibold "
         >
           Edit
-        </button>
-        <button
+        </Button>
+        <Button
           className="bg-red-700 text-white p-2 w-full
          rounded-md font-semibold "
         >
           Delete
-        </button>
+        </Button>
       </div>
     </div>
   );
