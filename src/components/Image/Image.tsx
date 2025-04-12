@@ -1,6 +1,8 @@
 import React from "react";
 
-const Image = () => {
+interface IProps {}
+
+const Image = ({}: IProps) => {
   return <div>Image</div>;
 };
 
