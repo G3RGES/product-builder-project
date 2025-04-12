@@ -1,9 +1,12 @@
 import React from "react";
 
-interface IProps {}
+interface IProps {
+  imageURL: string;
+  alt: string;
+}
 
-const Image = ({}: IProps) => {
-  return <div>Image</div>;
+const Image = ({ imageURL, alt }: IProps) => {
+  return <img className="" src={imageURL} alt={alt} />;
 };
 
 export default Image;
