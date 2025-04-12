@@ -1,11 +1,13 @@
 import React from "react";
+import Image from "../Image/Image";
 
 interface IProps {}
 
 const ProductCard = ({}: IProps) => {
   return (
     <div className="border rounded-md p-2 flex flex-col">
-      <img className="" src="" alt="product_name" />
+      {/* <img className="" src="" alt="product_name" /> */}
+      <Image className="rounded-md mb-2" imageURL="" alt={"product_name"} />
       <h3 className=""></h3>
       <p className=""></p>
       <div className="flex items-center space-x-1.5 my-2">
@@ -16,7 +18,12 @@ const ProductCard = ({}: IProps) => {
 
       <div className="flex items-center justify-between">
         <span className=""></span>
-        <img className="w-10 h-10 rounded-full" src="" alt="" />
+        {/* <img className="w-10 h-10 rounded-full" src="" alt="" /> */}
+        <Image
+          className="w-10 h-10 rounded-full "
+          imageURL="https://www.stockvault.net/data/2016/02/26/185161/preview16.jpg"
+          alt=""
+        />
       </div>
 
       <div className="flex items-center justify-between space-x-1.5 my-5">
