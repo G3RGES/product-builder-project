@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 interface IProps {
   children: ReactNode;
-  className: string;
+  className?: string;
 }
 
 const Button = ({ children, className }: IProps) => {
