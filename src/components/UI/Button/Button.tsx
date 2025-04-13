@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-interface IProps {
+import React, { ButtonHTMLAttributes, ReactNode } from "react";
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   className?: string;
 }
