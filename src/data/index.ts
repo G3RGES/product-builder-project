@@ -6,7 +6,7 @@ export const productList: IProduct[] = [
     id: uuid(),
     title: "Nike Shoes",
     description:
-      "As luxury T-Shirt is just as distinctive and can be trimmed with premium materials like Nappa leather and carbon fiber.",
+      "As luxury Sneakers is just as distinctive and can be trimmed with premium materials like Nappa leather and carbon fiber.",
     imageURL:
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     price: "350",
@@ -60,9 +60,9 @@ export const productList: IProduct[] = [
   },
   {
     id: uuid(),
-    title: "Casual Men Clothes",
+    title: "Desktop Computer",
     description:
-      "As luxury T-Shirt is just as distinctive and can be trimmed with premium materials like Nappa leather and carbon fiber.",
+      "As luxury PCs is just as distinctive and can be trimmed with premium materials like RTX GPUs and carbon fiber case.",
     imageURL:
       "https://images.unsplash.com/photo-1552831388-6a0b3575b32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
     price: "1500",
@@ -77,7 +77,7 @@ export const productList: IProduct[] = [
     id: uuid(),
     title: "Nike Shoes",
     description:
-      "As luxury T-Shirt is just as distinctive and can be trimmed with premium materials like Nappa leather and carbon fiber.",
+      "As luxury Sneakers is just as distinctive and can be trimmed with premium materials like Nappa leather and carbon fiber.",
     imageURL:
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     price: "350",
@@ -131,9 +131,9 @@ export const productList: IProduct[] = [
   },
   {
     id: uuid(),
-    title: "Casual Men Clothes",
+    title: "Desktop Computer",
     description:
-      "As luxury T-Shirt is just as distinctive and can be trimmed with premium materials like Nappa leather and carbon fiber.",
+      "As luxury PCs is just as distinctive and can be trimmed with premium materials like RTX GPUs and carbon fiber case.",
     imageURL:
       "https://images.unsplash.com/photo-1552831388-6a0b3575b32a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
     price: "1500",
