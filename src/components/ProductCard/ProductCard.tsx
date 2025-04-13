@@ -25,7 +25,7 @@ const ProductCard = ({ product }: IProps) => {
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="">{product.price}</span>
+        <span className="">{product.price}$</span>
         {/* <img className="w-10 h-10 rounded-full" src="" alt="" /> */}
         <Image
           className="w-10 h-10 rounded-full "
