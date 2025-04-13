@@ -30,7 +30,7 @@ const ProductCard = ({ product }: IProps) => {
         </span>
         {/* <img className="w-10 h-10 rounded-full" src="" alt="" /> */}
         <Image
-          className="w-10 h-10 rounded-full "
+          className="w-10 h-10 rounded-full object-bottom"
           imageURL={product.category.imageURL}
           alt={product.category.name}
         />
