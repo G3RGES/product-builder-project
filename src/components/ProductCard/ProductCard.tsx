@@ -1,16 +1,23 @@
 import React from "react";
 import Image from "../Image/Image";
 import Button from "../UI/Button/Button";
+import { IProduct } from "../../interfaces";
 
-interface IProps {}
+interface IProps {
+  product: IProduct;
+}
 
-const ProductCard = ({}: IProps) => {
+const ProductCard = ({ product }: IProps) => {
   return (
     <div className="border rounded-md p-2 flex flex-col">
       {/* <img className="" src="" alt="product_name" /> */}
-      <Image className="rounded-md mb-2" imageURL="" alt={"product_name"} />
-      <h3 className=""></h3>
-      <p className=""></p>
+      <Image
+        className="rounded-md mb-2"
+        imageURL={product.imageURL}
+        alt={"product_name"}
+      />
+      <h3 className="">{product.title}</h3>
+      <p className="">{product.description}</p>
       <div className="flex items-center space-x-1.5 my-2">
         <span className="w-5 h-5 bg-black rounded-full cursor-pointer" />
         <span className="w-5 h-5 bg-red-600 rounded-full cursor-pointer" />
@@ -18,7 +25,7 @@ const ProductCard = ({}: IProps) => {
       </div>
 
       <div className="flex items-center justify-between">
-        <span className=""></span>
+        <span className="">{product.price}</span>
         {/* <img className="w-10 h-10 rounded-full" src="" alt="" /> */}
         <Image
           className="w-10 h-10 rounded-full "
