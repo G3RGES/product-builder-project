@@ -16,7 +16,7 @@ const ProductCard = ({ product }: IProps) => {
         imageURL={product.imageURL}
         alt={"product_name"}
       />
-      <h3 className="">{product.title}</h3>
+      <h3 className="my-2 font-bold">{product.title}</h3>
       <p className="">{product.description}</p>
       <div className="flex items-center space-x-1.5 my-2">
         <span className="w-5 h-5 bg-black rounded-full cursor-pointer" />
