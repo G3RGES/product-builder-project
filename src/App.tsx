@@ -4,7 +4,7 @@ import { productList } from "./data";
 
 function App() {
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="grid grid-cols-4 gap-2 ">
         {productList.map((product) => (
           <ProductCard key={product.id} product={product} />
