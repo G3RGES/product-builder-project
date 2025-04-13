@@ -2,6 +2,7 @@ import React from "react";
 import Image from "../Image/Image";
 import Button from "../UI/Button/Button";
 import { IProduct } from "../../interfaces";
+import { txtSlicer } from "../../utils/functions";
 
 interface IProps {
   product: IProduct;
@@ -17,7 +18,7 @@ const ProductCard = ({ product }: IProps) => {
         alt={"product_name"}
       />
       <h3 className="my-2 font-bold">{product.title}</h3>
-      <p className="">{product.description}</p>
+      <p className="">{txtSlicer(product.description, 100)}</p>
       <div className="flex items-center space-x-1.5 my-2">
         <span className="w-5 h-5 bg-black rounded-full cursor-pointer" />
         <span className="w-5 h-5 bg-red-600 rounded-full cursor-pointer" />
