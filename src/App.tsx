@@ -1,10 +1,16 @@
 import "./App.css";
+import ProductCard from "./components/ProductCard/ProductCard";
+import { productList } from "./data";
 
 function App() {
   return (
-    <>
-      <p className="text-3xl font-bold">Hello</p>
-    </>
+    <div>
+      <div className="grid grid-cols-4 gap-2 ">
+        {productList.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
   );
 }
 
