@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import Modal from "./components/UI/Modal/Modal";
-import { productList } from "./data";
+import { formInputsList, productList } from "./data";
 import Button from "./components/UI/Button/Button";
+import Input from "./components/UI/Input/Input";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,10 @@ function App() {
 
   return (
     <div className="container mx-auto">
-      <Button className="bg-green-700 hover:bg-green-600" onClick={openModal}>
+      <Button
+        className="bg-green-700 hover:bg-green-600 focus:outline-none"
+        onClick={openModal}
+      >
         Add
       </Button>
 
@@ -32,6 +36,18 @@ function App() {
         ))}
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal} title="Add New Product">
+        {formInputsList.map((input) => (
+          <div key={input.id} className="flex flex-col ">
+            <label
+              className="block text-white text-sm font-bold mb-2"
+              htmlFor={input.id}
+            >
+              {input.label}
+            </label>
+            <Input type="text" id={input.id} name={input.name} />
+          </div>
+        ))}
+
         <div className="flex items-center justify-between space-x-2.5">
           <Button className="bg-green-700 hover:bg-green-600">Submit</Button>
 
