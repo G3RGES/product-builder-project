@@ -7,21 +7,23 @@ import Button from "./components/UI/Button/Button";
 import Input from "./components/UI/Input/Input";
 import { IProduct } from "./interfaces";
 
+const initialProduct = {
+  title: "",
+  description: "",
+  imageURL: "",
+  price: "",
+  colors: [],
+  category: {
+    name: "",
+    imageURL: "",
+  },
+};
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [product, setProduct] = useState<IProduct>({
-    title: "",
-    description: "",
-    imageURL: "",
-    price: "",
-    colors: [],
-    category: {
-      name: "",
-      imageURL: "",
-    },
-  });
+  const [product, setProduct] = useState<IProduct>(initialProduct);
 
-  //* MODAL HANDLER *//
+  //* HANDLERS *//
 
   const openModal = () => setIsOpen(true);
 
@@ -29,6 +31,17 @@ function App() {
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    productList.push(product);
+    setIsOpen(false);
+  };
+
+  const cancelHandler = () => {
+    setProduct(initialProduct);
+    setIsOpen(false);
   };
 
   return (
@@ -50,7 +63,7 @@ function App() {
       </div>
 
       <Modal isOpen={isOpen} closeModal={closeModal} title="Add New Product">
-        <div className="space-y-3">
+        <form className="space-y-3" onSubmit={submitHandler}>
           {formInputsList.map((input) => (
             <div key={input.id} className="flex flex-col ">
               <label
@@ -71,11 +84,19 @@ function App() {
           ))}
 
           <div className="flex items-center justify-between space-x-2.5">
-            <Button className="bg-[#034694] hover:bg-blue-700">Submit</Button>
+            <Button className="bg-[#034694] hover:bg-blue-700" type="submit">
+              Submit
+            </Button>
 
-            <Button className="bg-gray-400 hover:bg-gray-500 ">Cancel</Button>
+            <Button
+              className="bg-gray-400 hover:bg-gray-500 "
+              type="button"
+              onClick={cancelHandler}
+            >
+              Cancel
+            </Button>
           </div>
-        </div>
+        </form>
       </Modal>
     </div>
   );
