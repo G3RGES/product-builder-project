@@ -36,22 +36,24 @@ function App() {
         ))}
       </div>
       <Modal isOpen={isOpen} closeModal={closeModal} title="Add New Product">
-        {formInputsList.map((input) => (
-          <div key={input.id} className="flex flex-col ">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-              htmlFor={input.id}
-            >
-              {input.label}
-            </label>
-            <Input type="text" id={input.id} name={input.name} />
+        <div className="space-y-3">
+          {formInputsList.map((input) => (
+            <div key={input.id} className="flex flex-col ">
+              <label
+                className="block text-sm font-medium mb-1 text-gray-600"
+                htmlFor={input.id}
+              >
+                {input.label}
+              </label>
+              <Input type="text" id={input.id} name={input.name} />
+            </div>
+          ))}
+
+          <div className="flex items-center justify-between space-x-2.5">
+            <Button className="bg-[#034694] hover:bg-blue-700">Submit</Button>
+
+            <Button className="bg-gray-400 hover:bg-gray-500 ">Cancel</Button>
           </div>
-        ))}
-
-        <div className="flex items-center justify-between space-x-2.5">
-          <Button className="bg-green-700 hover:bg-green-600">Submit</Button>
-
-          <Button className="bg-gray-400 hover:bg-gray-500 ">Cancel</Button>
         </div>
       </Modal>
     </div>
