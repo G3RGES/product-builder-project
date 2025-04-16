@@ -14,7 +14,12 @@
  * @property {string} price - Error message for the price field.
  */
 
-export const productValidation = () => {
+export const productValidation = (product: {
+  title: string;
+  description: string;
+  imageURL: string;
+  price: string;
+}) => {
   const errors: {
     title: string;
     description: string;
@@ -26,4 +31,6 @@ export const productValidation = () => {
     imageURL: "",
     price: "",
   };
+
+  return errors;
 };
