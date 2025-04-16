@@ -33,14 +33,14 @@ function App() {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    productList.push(product);
+  const cancelHandler = () => {
+    setProduct(initialProduct);
     setIsOpen(false);
   };
 
-  const cancelHandler = () => {
-    setProduct(initialProduct);
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    productList.push(product);
     setIsOpen(false);
   };
 
