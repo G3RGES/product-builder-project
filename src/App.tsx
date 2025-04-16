@@ -41,6 +41,7 @@ function App() {
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     productList.push(product);
+    setProduct(initialProduct);
     setIsOpen(false);
   };
 
