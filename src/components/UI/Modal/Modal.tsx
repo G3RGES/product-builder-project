@@ -29,12 +29,14 @@ const Modal = ({ isOpen, closeModal, title, children }: IProps) => {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-xl bg-black p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+              className="w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl
+               duration-300 ease-out data-[closed]:transform-[scale(95%)]
+                data-[closed]:opacity-0"
             >
               {title && (
                 <DialogTitle
                   as="h3"
-                  className="text-base/7 font-medium text-white"
+                  className="text-base/7 font-medium text-black text-center text-xl"
                 >
                   {title}
                 </DialogTitle>
