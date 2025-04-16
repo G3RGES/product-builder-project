@@ -34,5 +34,22 @@ export const productValidation = (product: {
 
   const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(product.imageURL);
 
+  if (
+    !product.title.trim() ||
+    product.title.trim().length < 10 ||
+    product.title.trim().length > 80
+  ) {
+    errors.title = "Product title must be between 10 and 80 characters!";
+  }
+
+  if (
+    !product.description.trim() ||
+    product.description.trim().length < 10 ||
+    product.description.trim().length > 900
+  ) {
+    errors.description =
+      "Product description must be between 10 and 900 characters!";
+  }
+
   return errors;
 };
