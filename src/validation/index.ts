@@ -32,5 +32,7 @@ export const productValidation = (product: {
     price: "",
   };
 
+  const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(product.imageURL);
+
   return errors;
 };
