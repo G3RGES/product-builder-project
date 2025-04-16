@@ -5,18 +5,31 @@ import Modal from "./components/UI/Modal/Modal";
 import { formInputsList, productList } from "./data";
 import Button from "./components/UI/Button/Button";
 import Input from "./components/UI/Input/Input";
+import { IProduct } from "./interfaces";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [product, setProduct] = useState<IProduct>({
+    title: "",
+    description: "",
+    imageURL: "",
+    price: "",
+    colors: [],
+    category: {
+      name: "",
+      imageURL: "",
+    },
+  });
 
   //* MODAL HANDLER *//
-  function openModal() {
-    setIsOpen(true);
-  }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const openModal = () => setIsOpen(true);
+
+  const closeModal = () => setIsOpen(false);
+
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProduct({ ...product, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="container mx-auto">
@@ -35,6 +48,7 @@ function App() {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+
       <Modal isOpen={isOpen} closeModal={closeModal} title="Add New Product">
         <div className="space-y-3">
           {formInputsList.map((input) => (
@@ -45,7 +59,14 @@ function App() {
               >
                 {input.label}
               </label>
-              <Input type="text" id={input.id} name={input.name} />
+
+              <Input
+                type="text"
+                id={input.id}
+                name={input.name}
+                value={product[input.name]}
+                onChange={onChangeHandler}
+              />
             </div>
           ))}
 
