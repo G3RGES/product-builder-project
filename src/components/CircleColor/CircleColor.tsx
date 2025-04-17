@@ -1,9 +1,13 @@
 import React from "react";
 
-interface IProps {}
+interface IProps {
+  color: string;
+}
 
-const CircleColor = ({}: IProps) => {
-  return <span className="w-5 h-5 bg-black rounded-full cursor-pointer" />;
+const CircleColor = ({ color }: IProps) => {
+  return (
+    <span className={`w-5 h-5 bg-[${color}] rounded-full cursor-pointer`} />
+  );
 };
 
 export default CircleColor;
