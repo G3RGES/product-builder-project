@@ -2,12 +2,13 @@ import { useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import Modal from "./components/UI/Modal/Modal";
-import { formInputsList, productList } from "./data";
+import { colors, formInputsList, productList } from "./data";
 import Button from "./components/UI/Button/Button";
 import Input from "./components/UI/Input/Input";
 import { IProduct } from "./interfaces";
 import { productValidation } from "./validation";
 import Error from "./components/Error/Error";
+import CircleColor from "./components/CircleColor/CircleColor";
 
 const initialProduct = {
   title: "",
@@ -114,6 +115,12 @@ function App() {
               <Error msg={errors[input.name]} />
             </div>
           ))}
+
+          <div className="flex items-center space-x-1.5 my-2">
+            {colors.map((color) => (
+              <CircleColor key={color} />
+            ))}
+          </div>
 
           <div className="flex items-center justify-between space-x-2.5">
             <Button className="bg-[#034694] hover:bg-blue-700" type="submit">
