@@ -7,6 +7,7 @@ import Button from "./components/UI/Button/Button";
 import Input from "./components/UI/Input/Input";
 import { IProduct } from "./interfaces";
 import { productValidation } from "./validation";
+import Error from "./components/Error/Error";
 
 const initialProduct = {
   title: "",
@@ -21,6 +22,12 @@ const initialProduct = {
 };
 
 function App() {
+  const [errors, setErrors] = useState({
+    title: "",
+    description: "",
+    imageURL: "",
+    price: "",
+  });
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState<IProduct>(initialProduct);
 
@@ -55,6 +62,7 @@ function App() {
       Object.values(errors).every((value) => value !== "");
 
     if (hasError) {
+      setErrors(errors);
       return;
     }
 
@@ -99,6 +107,7 @@ function App() {
                 value={product[input.name]}
                 onChange={onChangeHandler}
               />
+              <Error msg={errors[input.name]} />
             </div>
           ))}
 
