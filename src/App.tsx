@@ -116,7 +116,7 @@ function App() {
             </div>
           ))}
 
-          <div className="flex items-center space-x-1.5 my-2">
+          <div className="flex flex-wrap items-center space-x-1.5 my-2">
             {colors.map((color) => (
               <CircleColor key={color} color={color} />
             ))}
