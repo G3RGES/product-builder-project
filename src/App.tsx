@@ -49,6 +49,15 @@ function App() {
       price: product.price,
     });
 
+    //* CHECK IF ANY VALUE HAS AND EMPTY STRING " ", && CHECK IF ALL VALUES ARE EMPTY " "
+    const hasError =
+      Object.values(errors).some((value) => value == "") ||
+      Object.values(errors).every((value) => value !== "");
+
+    if (hasError) {
+      return;
+    }
+
     productList.push(product);
     setProduct(initialProduct);
     setIsOpen(false);
