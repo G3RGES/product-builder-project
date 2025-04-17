@@ -6,6 +6,7 @@ import { formInputsList, productList } from "./data";
 import Button from "./components/UI/Button/Button";
 import Input from "./components/UI/Input/Input";
 import { IProduct } from "./interfaces";
+import { productValidation } from "./validation";
 
 const initialProduct = {
   title: "",
@@ -40,6 +41,14 @@ function App() {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const errors = productValidation({
+      title: product.title,
+      description: product.description,
+      imageURL: product.imageURL,
+      price: product.price,
+    });
+
     productList.push(product);
     setProduct(initialProduct);
     setIsOpen(false);
