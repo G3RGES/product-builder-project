@@ -74,10 +74,12 @@ function App() {
   return (
     <div className="container mx-auto">
       <Button
-        className="bg-green-700 hover:bg-green-600 focus:outline-none"
+        className="block bg-green-700 hover:bg-green-600 focus:outline-none
+         mx-auto my-10 px-10 font-medium"
         onClick={openModal}
+        width="w-fit"
       >
-        Add
+        Add Product
       </Button>
 
       <div
