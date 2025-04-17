@@ -51,5 +51,13 @@ export const productValidation = (product: {
       "Product description must be between 10 and 900 characters!";
   }
 
+  if (!product.imageURL.trim() || !validUrl) {
+    errors.imageURL = "Valid image URL is required";
+  }
+
+  if (!product.price.trim() || isNaN(Number(product.price))) {
+    errors.price = "Valid price is required";
+  }
+
   return errors;
 };
