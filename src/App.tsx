@@ -39,6 +39,8 @@ function App() {
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
+
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
   const cancelHandler = () => {
