@@ -75,8 +75,6 @@ function App() {
     setIsOpen(false);
   };
 
-  console.log(tempColors); //*TESTING
-
   return (
     <div className="container mx-auto">
       <Button
