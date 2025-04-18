@@ -74,8 +74,8 @@ function App() {
     }
 
     setProducts((prev) => [
-      ...prev,
       { ...product, id: uuid(), colors: tempColors },
+      ...prev,
     ]);
     setProduct(initialProduct);
     setIsOpen(false);
