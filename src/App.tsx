@@ -1,3 +1,4 @@
+import { v4 as uuid, v4 } from "uuid";
 import { useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
@@ -72,7 +73,10 @@ function App() {
       return;
     }
 
-    setProducts((prev) => [...prev, product]);
+    setProducts((prev) => [
+      ...prev,
+      { ...product, id: uuid(), colors: tempColors },
+    ]);
     setProduct(initialProduct);
     setIsOpen(false);
   };
