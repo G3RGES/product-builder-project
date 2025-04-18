@@ -10,6 +10,7 @@ import { IProduct } from "./interfaces";
 import { productValidation } from "./validation";
 import Error from "./components/Error/Error";
 import CircleColor from "./components/CircleColor/CircleColor";
+import Select from "./components/UI/Select/Select";
 
 const initialProduct = {
   title: "",
@@ -135,6 +136,8 @@ function App() {
               </span>
             ))}
           </div>
+
+          <Select />
 
           <div className="flex flex-wrap items-center space-x-1.5 my-2">
             {colors.map((color) => (
