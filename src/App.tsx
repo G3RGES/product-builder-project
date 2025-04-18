@@ -118,13 +118,32 @@ function App() {
           ))}
 
           <div className="flex flex-wrap items-center space-x-1.5 my-2">
+            {tempColors.map((color) => (
+              <span
+                key={color}
+                color={color}
+                className="text-white rounded-md p-1 m-1 text-xs"
+                style={{ backgroundColor: color }}
+              >
+                {color}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center space-x-1.5 my-2">
             {colors.map((color) => (
               <CircleColor
                 key={color}
                 color={color}
-                onClick={() =>
-                  setTempColors((prevColors) => [...prevColors, color])
-                }
+                onClick={() => {
+                  if (tempColors.includes(color)) {
+                    setTempColors((prevColors) =>
+                      prevColors.filter((c) => c !== color)
+                    );
+                    return;
+                  }
+                  setTempColors((prevColors) => [...prevColors, color]);
+                }}
               />
             ))}
           </div>
