@@ -124,6 +124,8 @@ function App() {
             </div>
           ))}
 
+          <Select selected={product.category} />
+
           <div className="flex flex-wrap items-center space-x-1.5 my-2">
             {tempColors.map((color) => (
               <span
@@ -136,8 +138,6 @@ function App() {
               </span>
             ))}
           </div>
-
-          <Select />
 
           <div className="flex flex-wrap items-center space-x-1.5 my-2">
             {colors.map((color) => (
