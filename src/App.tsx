@@ -31,6 +31,7 @@ function App() {
   });
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState<IProduct>(initialProduct);
+  const [tempColors, setTempColors] = useState<string[]>([]);
 
   //* HANDLERS *//
 
@@ -73,6 +74,8 @@ function App() {
     setProduct(initialProduct);
     setIsOpen(false);
   };
+
+  console.log(tempColors); //*TESTING
 
   return (
     <div className="container mx-auto">
@@ -121,7 +124,9 @@ function App() {
               <CircleColor
                 key={color}
                 color={color}
-                onClick={() => console.log(color)}
+                onClick={() =>
+                  setTempColors((prevColors) => [...prevColors, color])
+                }
               />
             ))}
           </div>
