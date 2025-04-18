@@ -68,7 +68,6 @@ function App() {
 
     if (hasError) {
       setErrors(errors);
-      console.log(errors);
 
       return;
     }
