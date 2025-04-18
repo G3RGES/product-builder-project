@@ -32,6 +32,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState<IProduct>(initialProduct);
   const [tempColors, setTempColors] = useState<string[]>([]);
+  const [products, setProducts] = useState<IProduct[]>(productList);
 
   //* HANDLERS *//
 
@@ -62,15 +63,17 @@ function App() {
 
     //* CHECK IF ANY VALUE HAS AND EMPTY STRING " ", && CHECK IF ALL VALUES ARE EMPTY " "
     const hasError =
-      Object.values(errors).some((value) => value == "") ||
+      Object.values(errors).some((value) => value == "") &&
       Object.values(errors).every((value) => value !== "");
 
     if (hasError) {
       setErrors(errors);
+      console.log(errors);
+
       return;
     }
 
-    productList.push(product);
+    setProducts((prev) => [...prev, product]);
     setProduct(initialProduct);
     setIsOpen(false);
   };
@@ -90,7 +93,7 @@ function App() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
        gap-2 p-2 rounded-md  "
       >
-        {productList.map((product) => (
+        {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
