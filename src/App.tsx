@@ -36,6 +36,7 @@ function App() {
   const [tempColors, setTempColors] = useState<string[]>([]);
   const [products, setProducts] = useState<IProduct[]>(productList);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [productToEdit, setProductToEdit] = useState(initialProduct);
 
   //* HANDLERS *//
 
