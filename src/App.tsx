@@ -11,6 +11,7 @@ import { productValidation } from "./validation";
 import Error from "./components/Error/Error";
 import CircleColor from "./components/CircleColor/CircleColor";
 import Select from "./components/UI/Select/Select";
+import { ProductNameTypes } from "./types";
 
 const initialProduct = {
   title: "",
@@ -137,7 +138,7 @@ function App() {
   const renderProductEdit = (
     id: string,
     label: string,
-    name: keyof IProduct
+    name: ProductNameTypes
   ) => {
     return (
       <div className="flex flex-col ">
@@ -268,6 +269,13 @@ function App() {
       >
         <form className="space-y-3" onSubmit={submitEditHandler}>
           {renderProductEdit("title", "Product Title", "title")}
+          {renderProductEdit(
+            "description",
+            "Product Description",
+            "description"
+          )}
+          {renderProductEdit("imageURL", "Product Image", "imageURL")}
+          {renderProductEdit("price", "Product Price", "price")}
 
           {/* <Select
             selected={selectedCategory}
