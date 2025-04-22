@@ -105,10 +105,10 @@ function App() {
     e.preventDefault();
 
     const errors = productValidation({
-      title: product.title,
-      description: product.description,
-      imageURL: product.imageURL,
-      price: product.price,
+      title: productToEdit.title,
+      description: productToEdit.description,
+      imageURL: productToEdit.imageURL,
+      price: productToEdit.price,
     });
 
     //* CHECK IF ANY VALUE HAS AND EMPTY STRING " ", && CHECK IF ALL VALUES ARE EMPTY " "
@@ -131,7 +131,7 @@ function App() {
       },
       ...prev,
     ]);
-    setProduct(initialProduct);
+    setProductToEdit(initialProduct);
     setIsOpen(false);
   };
 
