@@ -36,7 +36,8 @@ function App() {
   const [tempColors, setTempColors] = useState<string[]>([]);
   const [products, setProducts] = useState<IProduct[]>(productList);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
-  const [productToEdit, setProductToEdit] = useState(initialProduct);
+  const [productToEdit, setProductToEdit] = useState<IProduct>(initialProduct);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
 
   //* HANDLERS *//
 
@@ -44,8 +45,18 @@ function App() {
 
   const closeModal = () => setIsOpen(false);
 
+  const openEditModal = () => setIsOpenEdit(true);
+
+  const closeEditModal = () => setIsOpenEdit(false);
+
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
+
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const onChangeEditHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProductToEdit({ ...productToEdit, [e.target.name]: e.target.value });
 
     setErrors({ ...errors, [e.target.name]: "" });
   };
@@ -89,6 +100,66 @@ function App() {
     setIsOpen(false);
   };
 
+  const submitEditHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const errors = productValidation({
+      title: product.title,
+      description: product.description,
+      imageURL: product.imageURL,
+      price: product.price,
+    });
+
+    //* CHECK IF ANY VALUE HAS AND EMPTY STRING " ", && CHECK IF ALL VALUES ARE EMPTY " "
+    const hasError =
+      Object.values(errors).some((value) => value == "") &&
+      Object.values(errors).every((value) => value !== "");
+
+    if (hasError) {
+      setErrors(errors);
+
+      return;
+    }
+
+    setProducts((prev) => [
+      {
+        ...product,
+        id: uuid(),
+        colors: tempColors,
+        category: selectedCategory,
+      },
+      ...prev,
+    ]);
+    setProduct(initialProduct);
+    setIsOpen(false);
+  };
+
+  const renderProductEdit = (
+    id: string,
+    label: string,
+    name: keyof IProduct
+  ) => {
+    return (
+      <div className="flex flex-col ">
+        <label
+          className="block text-sm font-medium mb-1 text-gray-600"
+          htmlFor={id}
+        >
+          {label}
+        </label>
+
+        <Input
+          type="text"
+          id={id}
+          name={name}
+          value={productToEdit[name]}
+          onChange={onChangeEditHandler}
+        />
+        <Error msg={errors[name]} />
+      </div>
+    );
+  };
+
   return (
     <div className="container mx-auto">
       <Button
@@ -105,10 +176,16 @@ function App() {
        gap-2 p-2 rounded-md  "
       >
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            setProductToEdit={setProductToEdit}
+            openEditModal={openEditModal}
+          />
         ))}
       </div>
 
+      {/* ADD PRODUCT MODAL */}
       <Modal isOpen={isOpen} closeModal={closeModal} title="Add New Product">
         <form className="space-y-3" onSubmit={submitHandler}>
           {formInputsList.map((input) => (
@@ -166,6 +243,67 @@ function App() {
               />
             ))}
           </div>
+
+          <div className="flex items-center justify-between space-x-2.5">
+            <Button className="bg-[#034694] hover:bg-blue-700" type="submit">
+              Submit
+            </Button>
+
+            <Button
+              className="bg-gray-400 hover:bg-gray-500 "
+              type="button"
+              onClick={cancelHandler}
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </Modal>
+
+      {/* Edit PRODUCT MODAL */}
+      <Modal
+        isOpen={isOpenEdit}
+        closeModal={closeEditModal}
+        title="Edit Product"
+      >
+        <form className="space-y-3" onSubmit={submitEditHandler}>
+          {renderProductEdit("title", "Product Title", "title")}
+
+          {/* <Select
+            selected={selectedCategory}
+            setSelected={setSelectedCategory}
+          /> */}
+
+          {/* <div className="flex flex-wrap items-center space-x-1.5 my-2">
+            {tempColors.map((color) => (
+              <span
+                key={color}
+                color={color}
+                className="text-white rounded-md p-1 m-1 text-xs"
+                style={{ backgroundColor: color }}
+              >
+                {color}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center space-x-1.5 my-2">
+            {colors.map((color) => (
+              <CircleColor
+                key={color}
+                color={color}
+                onClick={() => {
+                  if (tempColors.includes(color)) {
+                    setTempColors((prevColors) =>
+                      prevColors.filter((c) => c !== color)
+                    );
+                    return;
+                  }
+                  setTempColors((prevColors) => [...prevColors, color]);
+                }}
+              />
+            ))}
+          </div> */}
 
           <div className="flex items-center justify-between space-x-2.5">
             <Button className="bg-[#034694] hover:bg-blue-700" type="submit">
