@@ -7,12 +7,15 @@ import CircleColor from "../CircleColor/CircleColor";
 
 interface IProps {
   product: IProduct;
+  setProductToEdit: (product: IProduct) => void;
+  openEditModal: () => void;
 }
 
-const ProductCard = ({ product }: IProps) => {
+const ProductCard = ({ product, setProductToEdit, openEditModal }: IProps) => {
   // --- HANDLER --- //
   const onEdit = () => {
-    console.log(product); //TESTING
+    setProductToEdit(product);
+    openEditModal();
   };
 
   return (
