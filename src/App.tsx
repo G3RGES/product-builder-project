@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard/ProductCard";
 import Modal from "./components/UI/Modal/Modal";
-import { colors, formInputsList, productList } from "./data";
+import { categories, colors, formInputsList, productList } from "./data";
 import Button from "./components/UI/Button/Button";
 import Input from "./components/UI/Input/Input";
 import { IProduct } from "./interfaces";
@@ -35,6 +35,7 @@ function App() {
   const [product, setProduct] = useState<IProduct>(initialProduct);
   const [tempColors, setTempColors] = useState<string[]>([]);
   const [products, setProducts] = useState<IProduct[]>(productList);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
   //* HANDLERS *//
 
@@ -124,7 +125,10 @@ function App() {
             </div>
           ))}
 
-          <Select selected={product.category} />
+          <Select
+            selected={selectedCategory}
+            setSelected={setSelectedCategory}
+          />
 
           <div className="flex flex-wrap items-center space-x-1.5 my-2">
             {tempColors.map((color) => (
