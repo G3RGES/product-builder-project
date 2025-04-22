@@ -10,6 +10,11 @@ interface IProps {
 }
 
 const ProductCard = ({ product }: IProps) => {
+  // --- HANDLER --- //
+  const onEdit = () => {
+    console.log(product); //TESTING
+  };
+
   return (
     <div className=" max-w-sm md:max-w-lg mx-auto border border-gray-200 rounded-md p-2 flex flex-col">
       <Image
@@ -40,7 +45,9 @@ const ProductCard = ({ product }: IProps) => {
       </div>
 
       <div className="flex items-center justify-between space-x-1.5 my-5">
-        <Button className="bg-green-700 ">Edit</Button>
+        <Button className="bg-green-700 " onClick={onEdit}>
+          Edit
+        </Button>
         <Button className="bg-red-700  ">Delete</Button>
       </div>
     </div>
