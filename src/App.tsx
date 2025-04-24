@@ -52,6 +52,10 @@ function App() {
 
   const closeEditModal = () => setIsOpenEdit(false);
 
+  const closeConfirmModal = () => setIsOpenConfirmModal(false);
+
+  const openConfirmModal = () => setIsOpenConfirmModal(true);
+
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
 
