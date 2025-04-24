@@ -123,17 +123,12 @@ function App() {
       return;
     }
 
-    setProducts((prev) => [
-      {
-        ...product,
-        id: uuid(),
-        colors: tempColors,
-        category: selectedCategory,
-      },
-      ...prev,
-    ]);
+    const updatedProducts = [...products];
+    updatedProducts[productToEditIdx] = productToEdit;
+    setProducts(updatedProducts);
+
     setProductToEdit(initialProduct);
-    setIsOpen(false);
+    setIsOpenEdit(false);
   };
 
   const renderProductEdit = (
