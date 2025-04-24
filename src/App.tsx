@@ -331,7 +331,7 @@ function App() {
             <Button
               className="bg-gray-400 hover:bg-gray-500 "
               type="button"
-              onClick={cancelHandler}
+              onClick={closeEditModal}
             >
               Cancel
             </Button>
