@@ -162,8 +162,6 @@ function App() {
     );
   };
 
-  console.log(productToEditIdx); // TESTING
-
   return (
     <div className="container mx-auto">
       <Button
