@@ -12,6 +12,7 @@ import Error from "./components/Error/Error";
 import CircleColor from "./components/CircleColor/CircleColor";
 import Select from "./components/UI/Select/Select";
 import { ProductNameTypes } from "./types";
+import toast, { Toaster } from "react-hot-toast";
 
 const initialProduct = {
   title: "",
@@ -107,6 +108,21 @@ function App() {
     setIsOpen(false);
   };
 
+  const removeProductHandler = () => {
+    const filtered = products.filter(
+      (product) => product.id !== productToEdit.id
+    );
+    setProducts(filtered);
+    closeConfirmModal();
+    toast("Product has been deleted successfully!", {
+      icon: "👏",
+      style: {
+        backgroundColor: "#c2344d",
+        color: "white",
+      },
+    });
+  };
+
   const submitEditHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -189,6 +205,7 @@ function App() {
             openEditModal={openEditModal}
             setProductToEditIdx={setProductToEditIdx}
             idx={idx}
+            openConfirmModal={openConfirmModal}
           />
         ))}
       </div>
@@ -367,6 +384,7 @@ function App() {
           </Button>
         </div>
       </Modal>
+      <Toaster />
     </div>
   );
 }
