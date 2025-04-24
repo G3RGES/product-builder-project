@@ -48,12 +48,17 @@ const ProductCard = ({
         <span className="font-semibold text-lg text-slate-600">
           {numberWithCommas(product.price)}$
         </span>
-        {/* <img className="w-10 h-10 rounded-full" src="" alt="" /> */}
-        <Image
-          className="w-10 h-10 rounded-full object-bottom"
-          imageURL={product.category.imageURL}
-          alt={product.category.name}
-        />
+
+        <div className="flex items-center space-x-2">
+          <span className="text-xs font-semibold text-gray-500">
+            {product.category.name}
+          </span>
+          <Image
+            imageURL={product.category.imageURL}
+            alt={product.category.name}
+            className="w-10 h-10 rounded-full object-bottom"
+          />
+        </div>
       </div>
 
       <div className="flex items-center justify-between space-x-1.5 my-5">
