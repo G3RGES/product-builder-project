@@ -106,6 +106,14 @@ function App() {
     ]);
     setProduct(initialProduct);
     setIsOpen(false);
+
+    toast("Product has been added successfully!", {
+      icon: "👏",
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
   };
 
   const removeProductHandler = () => {
@@ -154,6 +162,14 @@ function App() {
     setProductToEdit(initialProduct);
     setTempColors([]);
     setIsOpenEdit(false);
+
+    toast("Product has been updated successfully!", {
+      icon: "👏",
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
   };
 
   const renderProductEdit = (
