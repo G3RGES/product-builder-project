@@ -38,6 +38,7 @@ function App() {
   const [products, setProducts] = useState<IProduct[]>(productList);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [productToEdit, setProductToEdit] = useState<IProduct>(initialProduct);
+  const [productToEditIdx, setProductToEditIdx] = useState<number>(0);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
 
   //* HANDLERS *//
@@ -161,6 +162,8 @@ function App() {
     );
   };
 
+  console.log(productToEditIdx); // TESTING
+
   return (
     <div className="container mx-auto">
       <Button
@@ -176,12 +179,14 @@ function App() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
        gap-2 p-2 rounded-md  "
       >
-        {products.map((product) => (
+        {products.map((product, idx) => (
           <ProductCard
             key={product.id}
             product={product}
             setProductToEdit={setProductToEdit}
             openEditModal={openEditModal}
+            setProductToEditIdx={setProductToEditIdx}
+            idx={idx}
           />
         ))}
       </div>
