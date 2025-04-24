@@ -2,7 +2,7 @@ import React from "react";
 import Image from "../Image/Image";
 import Button from "../UI/Button/Button";
 import { IProduct } from "../../interfaces";
-import { txtSlicer } from "../../utils/functions";
+import { txtSlicer, numberWithCommas } from "../../utils/functions";
 import CircleColor from "../CircleColor/CircleColor";
 
 interface IProps {
@@ -46,7 +46,7 @@ const ProductCard = ({
 
       <div className="flex items-center justify-between">
         <span className="font-semibold text-lg text-slate-600">
-          {product.price}$
+          {numberWithCommas(product.price)}$
         </span>
         {/* <img className="w-10 h-10 rounded-full" src="" alt="" /> */}
         <Image
