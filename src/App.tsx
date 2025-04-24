@@ -128,6 +128,7 @@ function App() {
     setProducts(updatedProducts);
 
     setProductToEdit(initialProduct);
+    setTempColors([]);
     setIsOpenEdit(false);
   };
 
@@ -280,8 +281,8 @@ function App() {
             setSelected={setSelectedCategory}
           /> */}
 
-          {/* <div className="flex flex-wrap items-center space-x-1.5 my-2">
-            {tempColors.map((color) => (
+          <div className="flex flex-wrap items-center space-x-1.5 my-2">
+            {tempColors.concat(productToEdit.colors).map((color) => (
               <span
                 key={color}
                 color={color}
@@ -309,7 +310,7 @@ function App() {
                 }}
               />
             ))}
-          </div> */}
+          </div>
 
           <div className="flex items-center justify-between space-x-2.5">
             <Button className="bg-[#034694] hover:bg-blue-700" type="submit">
