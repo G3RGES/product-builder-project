@@ -1,7 +1,7 @@
 import React from "react";
-import { Listbox, Transition } from "@headlessui/react";
+import { Label, Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { categories } from "../../../data";
 import { ICategory } from "./../../../interfaces/index";
 
@@ -19,9 +19,9 @@ const Select = ({ selected, setSelected }: IProps) => {
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium text-gray-900">
+          <Label className="block text-sm font-medium text-gray-900">
             Category
-          </Listbox.Label>
+          </Label>
           <div className="relative">
             <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-3 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
               <span className="flex items-center">
