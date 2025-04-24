@@ -124,7 +124,10 @@ function App() {
     }
 
     const updatedProducts = [...products];
-    updatedProducts[productToEditIdx] = productToEdit;
+    updatedProducts[productToEditIdx] = {
+      ...productToEdit,
+      colors: tempColors.concat(productToEdit.colors),
+    };
     setProducts(updatedProducts);
 
     setProductToEdit(initialProduct);
@@ -276,10 +279,10 @@ function App() {
           {renderProductEdit("imageURL", "Product Image", "imageURL")}
           {renderProductEdit("price", "Product Price", "price")}
 
-          {/* <Select
-            selected={selectedCategory}
+          <Select
+            selected={productToEdit.category}
             setSelected={setSelectedCategory}
-          /> */}
+          />
 
           <div className="flex flex-wrap items-center space-x-1.5 my-2">
             {tempColors.concat(productToEdit.colors).map((color) => (
@@ -301,6 +304,12 @@ function App() {
                 color={color}
                 onClick={() => {
                   if (tempColors.includes(color)) {
+                    setTempColors((prevColors) =>
+                      prevColors.filter((c) => c !== color)
+                    );
+                    return;
+                  }
+                  if (productToEdit.colors.includes(color)) {
                     setTempColors((prevColors) =>
                       prevColors.filter((c) => c !== color)
                     );
