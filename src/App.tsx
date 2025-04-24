@@ -281,7 +281,9 @@ function App() {
 
           <Select
             selected={productToEdit.category}
-            setSelected={setSelectedCategory}
+            setSelected={(value) =>
+              setProductToEdit({ ...productToEdit, category: value })
+            }
           />
 
           <div className="flex flex-wrap items-center space-x-1.5 my-2">
