@@ -40,6 +40,7 @@ function App() {
   const [productToEdit, setProductToEdit] = useState<IProduct>(initialProduct);
   const [productToEditIdx, setProductToEditIdx] = useState<number>(0);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [isOpenConfirmModal, setIsOpenConfirmModal] = useState(false);
 
   //* HANDLERS *//
 
@@ -337,6 +338,30 @@ function App() {
             </Button>
           </div>
         </form>
+      </Modal>
+
+      {/* Delete PRODUCT MODAL */}
+      <Modal
+        isOpen={isOpenConfirmModal}
+        closeModal={closeConfirmModal}
+        title="Are you sure you want to remove this Product from your Store?"
+        description="Deleting this product will remove it permanently from your inventory. Any associated data, sales history, and other related information will also be deleted. Please make sure this is the intended action."
+      >
+        <div className="flex items-center space-x-3">
+          <Button
+            className="bg-[#c2344d] hover:bg-red-800"
+            onClick={removeProductHandler}
+          >
+            Yes, remove
+          </Button>
+          <Button
+            type="button"
+            className="bg-[#f5f5fa] hover:bg-gray-300 !text-black"
+            onClick={closeConfirmModal}
+          >
+            Cancel
+          </Button>
+        </div>
       </Modal>
     </div>
   );
